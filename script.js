@@ -15,3 +15,18 @@ let alice = [5, 6, 7];
 let bob = [3, 6, 10];
 
 console.log(compareTriplets(alice, bob));
+
+function getSecondLargest(arr) {
+    let max = arr.reduce((biggest, current) => {
+        return biggest > current ? biggest : current;
+    }, 0);
+    let newArr = arr.filter(elem => {
+        return elem != max;
+    });
+    return newArr.reduce((biggest, current) => {
+        return biggest > current ? biggest : current;
+    }, 0);
+}
+let arr = [5, 6, 3, 2, 7];
+
+console.log(getSecondLargest(arr));
