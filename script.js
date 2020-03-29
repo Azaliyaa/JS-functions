@@ -30,3 +30,23 @@ function getSecondLargest(arr) {
 let arr = [5, 6, 3, 2, 7];
 
 console.log(getSecondLargest(arr));
+
+function climbingLeaderboard(scores, alice) {
+    let ranks = [];
+    let newArr = scores.filter((score, index, arr) => {
+        return score != arr[index - 1];
+    });
+    alice.forEach(elem => {
+        newArr.push(elem);
+        newArr.sort((a, b) => a - b).reverse();
+        let rank = newArr.indexOf(elem) + 1;
+        ranks.push(rank);
+        newArr.splice(newArr.indexOf(elem));
+    })
+    return ranks;
+}
+
+let scores = [100, 90, 80, 75, 60];
+let aliceScore = [50, 65, 77, 90, 102];
+
+console.log(climbingLeaderboard(scores, aliceScore));
